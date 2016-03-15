@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace laba_1_genetic_algoritn
+namespace geneticAlgorithm
 {/// <summary>
 /// Клас координат 
 /// </summary>
