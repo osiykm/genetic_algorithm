@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace geneticAlgorithm
 {
-    
+
     class GeneticAlgorithm
     {
 
@@ -15,14 +15,15 @@ namespace geneticAlgorithm
         private double mutationChance;
         private int populationSize;
         private List<Mutation> mutation;
+        private List<Chromosome> population;
         /// <summary>
         /// Инициализация генетического алгоритма
         /// </summary>
         /// <param name="maxAges">Максимальное количество поколений </param>
         /// <param name="pointArray"> Точки</param>
-        /// <param name="mutationChance">Шанс мутаций</param>
+        /// <param name="mutationChance">Шанс мутации</param>
         /// <param name="populationSize количество особей в популяции">количес</param>
-        GeneticAlgorithm(int maxAges, List<Coordinates> pointArray, double mutationChance, int populationSize, List<Mutation> mutation)
+        public GeneticAlgorithm(int maxAges, List<Coordinates> pointArray, double mutationChance, int populationSize, List<Mutation> mutation)
         {
             this.maxAges = maxAges;
             this.pointArray = pointArray;
@@ -31,5 +32,12 @@ namespace geneticAlgorithm
             this.mutation = mutation;
         }
 
+        public void run()
+        {
+            for (int i = 0; i < populationSize; i++)
+            {
+
+            }
+        }
     }
 }

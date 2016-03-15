@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace geneticAlgorithm
-{
-    enum Mutation { OnePointMutation, Inversion, Translocation }
+{/// <summary>
+/// Перечислення видів мутацій
+/// OnePointMutation мутація одного елемента в хромосомі
+/// Inversion інверсія
+/// Translocation транслокація
+/// </summary>
+    enum Mutation {OnePointMutation, Inversion, Translocation }
 }

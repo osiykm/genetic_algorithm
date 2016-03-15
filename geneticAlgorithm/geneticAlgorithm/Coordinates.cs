@@ -12,9 +12,10 @@ namespace geneticAlgorithm
     {
         private int x { get; }
         private int y { get; }
-        Coordinates(int x, int y)
+        public Coordinates(int x, int y)
         {
-
+            this.x = x;
+            this.y = y;
         }
         /// <summary>
         /// Вертає відстань між точками а і b
@@ -22,7 +23,7 @@ namespace geneticAlgorithm
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        static double getLenght(Coordinates a, Coordinates b) 
+       public  static double getLenght(Coordinates a, Coordinates b) 
         {
             return Math.Sqrt(Math.Pow(a.x - b.x, 2)+Math.Pow(a.y-b.y, 2));
             
