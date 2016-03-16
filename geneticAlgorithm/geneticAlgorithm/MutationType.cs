@@ -11,5 +11,5 @@ namespace geneticAlgorithm
 /// Inversion інверсія
 /// Translocation транслокація
 /// </summary>
-    enum Mutation {OnePointMutation, Inversion, Translocation }
+    enum Mutation {INVERSION, TRANSLOCATION }
 }

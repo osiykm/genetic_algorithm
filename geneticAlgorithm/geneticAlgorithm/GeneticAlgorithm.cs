@@ -11,7 +11,6 @@ namespace geneticAlgorithm
     {
 
         private int maxAges;
-        private List<Coordinates> pointArray;
         private double mutationChance;
         private int populationSize;
         private List<Mutation> mutation;
@@ -26,17 +25,38 @@ namespace geneticAlgorithm
         public GeneticAlgorithm(int maxAges, List<Coordinates> pointArray, double mutationChance, int populationSize, List<Mutation> mutation)
         {
             this.maxAges = maxAges;
-            this.pointArray = pointArray;
+            Chromosome.points = pointArray;
             this.mutationChance = mutationChance;
             this.populationSize = populationSize;
             this.mutation = mutation;
         }
-
+        /// <summary>
+        /// Основной метод алгоритма
+        /// </summary>
         public void run()
         {
+            GenerateFirstPopulation(); //создаю первую популяцию
+
+
+        }
+        /// <summary>
+        /// Создание первой популяции
+        /// </summary>
+        private void GenerateFirstPopulation()
+        {
+            List<int> temp = new List<int>();
+            Random RND = new Random();
+            for (int i = 0; i < Chromosome.points.Count; i++)
+            {
+                temp.Add(i);
+            }
             for (int i = 0; i < populationSize; i++)
             {
-
+                temp = temp.OrderBy(v => RND.Next()).ToList();
+                Chromosome temp2 = new Chromosome(); 
+                temp2.AddRange(temp);
+                population.Add(temp2);
+                population[i].Resize();
             }
         }
     }
