@@ -8,6 +8,6 @@ namespace geneticAlgorithm
 {
     enum Crossover
     {
-        ORDERED, CYCLE, RECOMBINATION, UPGRADE_REGOMBINATION, MODIFIED
+        ORDERED, CYCLE, RECOMBINATION, MODIFIED
     }
 }

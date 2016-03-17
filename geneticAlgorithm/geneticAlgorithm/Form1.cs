@@ -22,7 +22,7 @@ namespace geneticAlgorithm
         {
             Chromosome a = new Chromosome() { 1, 2, 5, 4, 3};
             Chromosome b = new Chromosome() { 3, 5, 4, 2, 1};
-            label1.Text = a.toString() + "\n" + b.toString() + "\n" + Chromosome.CrossoverRecombination(a, b).toString();
+         //   label1.Text = a.toString() + "\n" + b.toString() + "\n" + Chromosome.CrossoverModified(a, b).toString();
             
         }
     }
