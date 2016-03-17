@@ -28,5 +28,10 @@ namespace geneticAlgorithm
             return Math.Sqrt(Math.Pow(a.x - b.x, 2)+Math.Pow(a.y-b.y, 2));
             
         }
+
+        public String toString()
+        {
+            return "(" + x + ", " + y + ")";
+        }
     }
 }

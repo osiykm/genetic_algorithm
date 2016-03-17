@@ -36,7 +36,8 @@ namespace geneticAlgorithm
         public void run()
         {
             GenerateFirstPopulation(); //создаю первую популяцию
-            
+            QuickSort(ref population); //Сортирую в порядке 
+
 
 
         }
@@ -46,14 +47,13 @@ namespace geneticAlgorithm
         private void GenerateFirstPopulation()
         {
             List<int> temp = new List<int>();
-            Random RND = new Random();
             for (int i = 0; i < Chromosome.points.Count; i++)
             {
                 temp.Add(i);
             }
             for (int i = 0; i < populationSize; i++)
             {
-                temp = temp.OrderBy(v => RND.Next()).ToList();
+                temp = temp.OrderBy(v => Randoms.getInt()).ToList();
                 Chromosome temp2 = new Chromosome(); 
                 temp2.AddRange(temp);
                 population.Add(temp2);
@@ -63,7 +63,7 @@ namespace geneticAlgorithm
         /// <summary>
         /// Функция сортировки
         /// </summary>
-        /// <param name="array">масиив для сортировки</param>
+        /// <param name="array">массив для сортировки</param>
         private static void QuickSort(ref List<Chromosome> array, int l, int r) 
         {
             int L = l;
@@ -95,7 +95,10 @@ namespace geneticAlgorithm
             }
 
         }
-
+        /// <summary>
+        /// Функция для сортировки (Основная)
+        /// </summary>
+        /// <param name="array"></param>
         public static void QuickSort(ref List<Chromosome> array)
         {
             QuickSort(ref array, 0, array.Count-1);
