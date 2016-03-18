@@ -20,9 +20,9 @@ namespace geneticAlgorithm
         
         private void textBox1_Click(object sender, EventArgs e)
         {
-            Chromosome a = new Chromosome() { 1, 2, 5, 4, 3};
-            Chromosome b = new Chromosome() { 3, 5, 4, 2, 1};
-         //   label1.Text = a.toString() + "\n" + b.toString() + "\n" + Chromosome.CrossoverModified(a, b).toString();
+            Chromosome a = new Chromosome() { 1, 2, 5, 4, 3, 6};
+            Chromosome b = new Chromosome() { 3, 5, 4, 2, 1, 6};
+            label1.Text = a.toString() + "\n" + b.toString() + "\n" + Chromosome.MutationTranslocation(a).toString();
             
         }
     }
