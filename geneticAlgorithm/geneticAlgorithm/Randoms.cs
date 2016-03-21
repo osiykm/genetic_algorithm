@@ -16,5 +16,13 @@ namespace geneticAlgorithm
         {
             return RND.Next();
         }
+        public static int getInt(int i)
+        {
+            return RND.Next(i);
+        }
+        public static Double getDouble()
+        {
+            return RND.NextDouble();
+        }
     }
 }

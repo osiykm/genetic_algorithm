@@ -6,14 +6,32 @@ using System.Threading.Tasks;
 
 namespace geneticAlgorithm
 {
-
     class GeneticAlgorithm
     {
 
+        /// <summary>
+        /// максимальное количество поколений
+        /// </summary>
         private int maxAges;
+        /// <summary>
+        /// Шанс мутации
+        /// </summary>
         private double mutationChance;
+        /// <summary>
+        /// количество особей в популяции
+        /// </summary>
         private int populationSize;
+        /// <summary>
+        /// Тип кроссовера
+        /// </summary>
+        private Crossover crossoverType;
+        /// <summary>
+        /// Массив вариантов мутаций
+        /// </summary>
         private List<Mutation> mutation;
+        /// <summary>
+        /// Популяция
+        /// </summary>
         private List<Chromosome> population;
         /// <summary>
         /// Инициализация генетического алгоритма
@@ -21,26 +39,42 @@ namespace geneticAlgorithm
         /// <param name="maxAges">Максимальное количество поколений </param>
         /// <param name="pointArray"> Точки</param>
         /// <param name="mutationChance">Шанс мутации</param>
-        /// <param name="populationSize количество особей в популяции">количес</param>
-        public GeneticAlgorithm(int maxAges, List<Coordinates> pointArray, double mutationChance, int populationSize, List<Mutation> mutation)
+        /// <param name="populationSize">количество особей в популяции</param>
+        /// <param name="mutation">Варианты мутации</param>
+        /// <param name="crossoverType">тип кроссовера</param>
+        public GeneticAlgorithm(int maxAges, List<Coordinates> pointArray, double mutationChance, int populationSize, List<Mutation> mutation, Crossover crossoverType)
         {
             this.maxAges = maxAges;
             Chromosome.points = pointArray;
             this.mutationChance = mutationChance;
             this.populationSize = populationSize;
             this.mutation = mutation;
+            this.crossoverType = crossoverType;
         }
         /// <summary>
         /// Основной метод алгоритма
         /// </summary>
-        public void run()
+        public Chromosome run()
         {
             GenerateFirstPopulation(); //создаю первую популяцию
             QuickSort(ref population); //Сортирую в порядке 
+            for (int i = 1; i < maxAges; ++i)
+            {
+                for (int k = 0; k < populationSize; ++k)
+                    population.Add(Chromosome.getCrossover(population[SelectionDuel()], population[SelectionDuel()], crossoverType));
 
-
-
+                if (mutationChance != 0)
+                    for (int mutation_i = 0; mutation_i < population.Count; mutation_i++)
+                    {
+                        if (Randoms.getDouble() <= mutationChance)
+                            population[mutation_i] = Chromosome.getMutation(population[mutation_i], mutation[Randoms.getInt(mutation.Count)]);
+                    }
+                QuickSort(ref population);
+                population = population.GetRange(0, populationSize);
+            }
+            return population[0];
         }
+
         /// <summary>
         /// Создание первой популяции
         /// </summary>
@@ -51,6 +85,7 @@ namespace geneticAlgorithm
             {
                 temp.Add(i);
             }
+            population = new List<Chromosome>();
             for (int i = 0; i < populationSize; i++)
             {
                 temp = temp.OrderBy(v => Randoms.getInt()).ToList();
@@ -60,6 +95,21 @@ namespace geneticAlgorithm
                 population[i].Resize();
             }
         }
+
+        /// <summary>
+        /// Турнирнй алгоритм
+        /// </summary>
+        private int SelectionDuel()
+        {
+            List<int> list = new List<int>();
+            for(int i = 0; i < 2; ++i)
+            {
+                list.Add(Randoms.getInt(populationSize));
+            }
+            list.Sort();
+            return list[0];
+        }
+
         /// <summary>
         /// Функция сортировки
         /// </summary>
@@ -95,13 +145,14 @@ namespace geneticAlgorithm
             }
 
         }
+
         /// <summary>
         /// Функция для сортировки (Основная)
         /// </summary>
         /// <param name="array"></param>
-        public static void QuickSort(ref List<Chromosome> array)
+        private static void QuickSort(ref List<Chromosome> array)
         {
             QuickSort(ref array, 0, array.Count-1);
         }
     }
-}
+}   

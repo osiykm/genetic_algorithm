@@ -20,10 +20,15 @@ namespace geneticAlgorithm
         
         private void textBox1_Click(object sender, EventArgs e)
         {
-            Chromosome a = new Chromosome() { 1, 2, 5, 4, 3, 6};
-            Chromosome b = new Chromosome() { 3, 5, 4, 2, 1, 6};
-            label1.Text = a.toString() + "\n" + b.toString() + "\n" + Chromosome.MutationTranslocation(a).toString();
-            
+            List<Coordinates> list = new List<Coordinates>() { new Coordinates(0, 0) , new Coordinates(0, 20) , new Coordinates(20, 0) , new Coordinates(20, 20) , new Coordinates(10, 100) , new Coordinates(102, 100), new Coordinates(122, 100), new Coordinates(10, 1230) };
+            List<Mutation> mut = new List<Mutation> {Mutation.GREED };
+            GeneticAlgorithm al = new GeneticAlgorithm(100, list, 0.001, 100, mut, Crossover.MODIFIED);
+            Chromosome a = al.run();
+            String s = a.Size.ToString() + " " + a.toString() + "\n";
+            label1.Text += s;
+            if(label1.Text.Length > s.Length*4)
+            label1.Text = label1.Text.Substring(label1.Text.Length-s.Length*2);
+
         }
     }
     }
