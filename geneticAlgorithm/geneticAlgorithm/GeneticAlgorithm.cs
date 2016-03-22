@@ -28,7 +28,7 @@ namespace geneticAlgorithm
         /// <summary>
         /// Массив вариантов мутаций
         /// </summary>
-        private List<Mutation> mutation;
+        private Mutation mutation;
         /// <summary>
         /// Популяция
         /// </summary>
@@ -42,7 +42,7 @@ namespace geneticAlgorithm
         /// <param name="populationSize">количество особей в популяции</param>
         /// <param name="mutation">Варианты мутации</param>
         /// <param name="crossoverType">тип кроссовера</param>
-        public GeneticAlgorithm(int maxAges, List<Coordinates> pointArray, double mutationChance, int populationSize, List<Mutation> mutation, Crossover crossoverType)
+        public GeneticAlgorithm(int maxAges, List<Coordinates> pointArray, double mutationChance, int populationSize, Mutation mutation, Crossover crossoverType)
         {
             this.maxAges = maxAges;
             Chromosome.points = pointArray;
@@ -64,10 +64,10 @@ namespace geneticAlgorithm
                     population.Add(Chromosome.getCrossover(population[SelectionDuel()], population[SelectionDuel()], crossoverType));
 
                 if (mutationChance != 0)
-                    for (int mutation_i = 0; mutation_i < population.Count; mutation_i++)
+                    for (int mutation_i = populationSize; mutation_i < population.Count; mutation_i++)
                     {
                         if (Randoms.getDouble() <= mutationChance)
-                            population[mutation_i] = Chromosome.getMutation(population[mutation_i], mutation[Randoms.getInt(mutation.Count)]);
+                            population[mutation_i] = Chromosome.getMutation(population[mutation_i], mutation);
                     }
                 QuickSort(ref population);
                 population = population.GetRange(0, populationSize);
