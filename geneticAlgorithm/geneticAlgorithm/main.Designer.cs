@@ -44,6 +44,7 @@
             this.grupBox5 = new System.Windows.Forms.GroupBox();
             this.generationPoints = new System.Windows.Forms.Button();
             this.pointsCount = new System.Windows.Forms.NumericUpDown();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.comb.SuspendLayout();
@@ -190,6 +191,7 @@
             // 
             // grupBox5
             // 
+            this.grupBox5.Controls.Add(this.ClearButton);
             this.grupBox5.Controls.Add(this.generationPoints);
             this.grupBox5.Controls.Add(this.pointsCount);
             this.grupBox5.Location = new System.Drawing.Point(12, 255);
@@ -201,9 +203,9 @@
             // 
             // generationPoints
             // 
-            this.generationPoints.Location = new System.Drawing.Point(13, 51);
+            this.generationPoints.Location = new System.Drawing.Point(71, 51);
             this.generationPoints.Name = "generationPoints";
-            this.generationPoints.Size = new System.Drawing.Size(116, 23);
+            this.generationPoints.Size = new System.Drawing.Size(72, 23);
             this.generationPoints.TabIndex = 1;
             this.generationPoints.Text = "Генерация";
             this.generationPoints.UseVisualStyleBackColor = true;
@@ -230,6 +232,16 @@
             0,
             0,
             0});
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(-5, 51);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(72, 23);
+            this.ClearButton.TabIndex = 2;
+            this.ClearButton.Text = "Очистить";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // main
             // 
@@ -280,6 +292,7 @@
         private System.Windows.Forms.GroupBox grupBox5;
         private System.Windows.Forms.Button generationPoints;
         private System.Windows.Forms.NumericUpDown pointsCount;
+        private System.Windows.Forms.Button ClearButton;
     }
 }
 

@@ -69,5 +69,11 @@ namespace geneticAlgorithm
                 g.DrawEllipse(brush, points[i].X-1, points[i].Y-1, 2, 2);
             }
         }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            points = new List<Coordinates>();
+            g.Clear(Color.WhiteSmoke);
+        }
     }
     }
